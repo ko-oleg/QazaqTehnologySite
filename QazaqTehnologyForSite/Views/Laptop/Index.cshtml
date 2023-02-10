@@ -1,0 +1,13 @@
+@model IEnumerable<QazaqTehnologyForSite.Models.Laptops.Laptop>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+<a asp-action="Createlaptop" asp-controller="Laptop">Добавить Ноутбук</a>
+<table class="table">
+    <tr><td>Имя</td><td>Прцессор</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Name</td><td>@item.Processor</td></tr>
+    }
+ 
+</table>

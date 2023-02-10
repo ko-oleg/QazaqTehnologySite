@@ -1,0 +1,13 @@
+﻿@model QazaqTehnologyForSite.Models.Laptops.Processor
+@{
+    ViewBag.Title = "Добавление процессора";
+}
+<form asp-action="CreateProcessor" asp-controller="Laptop">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Название процессора</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default" />
+    </div>
+</form>

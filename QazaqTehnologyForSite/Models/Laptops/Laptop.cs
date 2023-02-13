@@ -19,8 +19,6 @@ namespace QazaqTehnologyForSite.Models.Laptops
         // public OperatingSystem OperatingSystem { get; set; }
         // public Set Set { get; set; }
         // public Keyboard Keyboard { get; set; }
-
-        
         
     }
     

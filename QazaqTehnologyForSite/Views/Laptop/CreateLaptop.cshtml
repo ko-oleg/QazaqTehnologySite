@@ -2,13 +2,20 @@
 @{
     ViewBag.Title = "Добавление Ноутбука";
 }
+<h1>Создание Ноутбука</h1>
 <form asp-action="CreateLaptop" asp-controller="Laptop">
     <div class="form-group">
         <label asp-for="Name" class="control-label">Имя Ноутбука</label>
         <input type="text" asp-for="Name" class="form-control" />
     </div>
     <div class="form-group">
-        <input type="submit" value="Создать" class="btn btn-default" />
+        <input type="submit" value="Создать" class="btn btn-secondary" />
     </div>
 </form>
+<form asp-controller="Laptop" asp-action="GoToViewAllProcessors" method="get">
+    <div class="form-group">
+        <input type="submit" class="btn btn-secondary" value="Выбрать процессор" />
+    </div>
+</form>
+
 

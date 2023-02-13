@@ -1,0 +1,24 @@
+﻿@model IEnumerable<QazaqTehnologyForSite.Models.Laptops.Processor>
+@{
+    ViewBag.Title = "Список процессоров";
+}
+<h1>Список всех процессоров</h1>
+<table class="table">
+    <h3 class="m-3">Все процессоры</h3>
+    
+    @foreach (var item in Model)
+    {
+        <tr><form asp-action="ChooseProcessor" asp-controller="Laptop" method="post"><td><input type="text" value="@item.Name" /></td>
+            <td><input type="submit" value="Выбрать" class="btn btn-secondary" /></td></form></tr>
+    }
+    
+
+</table>
+
+
+
+<form asp-controller="Laptop" asp-action="GoToCreateProcessor" method="get">
+    <div class="form-group">
+        <input type="submit" class="btn btn-secondary" value="Создать процессор" />
+    </div>
+</form>

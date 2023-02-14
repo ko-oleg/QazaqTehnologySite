@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,34 +17,48 @@ namespace QazaqTehnologyForSite.Controllers
         {
             _db = context;
         }
-        [HttpGet("Index")]
-        public async Task<IActionResult> Index()
-        {
-            return View(await _db.Laptops.ToListAsync());
-        }
+        //GET
+        // public IActionResult Index()
+        // {
+        //     return View();
+        // }
+        
         [HttpGet("GoToCreateProcessor")]
         public RedirectToActionResult GoToCreateProcessor()
         {
             return RedirectToAction("CreateProcessor");
         }
+        
         [HttpGet("GoToViewAllProcessors")]
         public RedirectToActionResult GoToViewAllProcessors()
         {
             return RedirectToAction("ViewAllProcessors");
         }
+        
+        [HttpGet("ViewAllProcessors")]
+        public async Task<IActionResult> ViewAllProcessors()
+        {
+            return View(await _db.Processors.ToListAsync());
+        }
+        [HttpGet("Index")]
+        public async Task<IActionResult> Index()
+        {
+            return View(await _db.Laptops.ToListAsync());
+        }
+        
         [HttpGet("CreateLaptop")]
         public IActionResult CreateLaptop()
         {
             return View();
         }
         [HttpPost("CreateLaptop")]
-        public async Task<IActionResult> CreateLaptop(Laptop laptop, Processor processor)
+        public async Task<IActionResult> CreateLaptop(Laptop laptop)
         {
-            laptop.Processor = processor;
             _db.Laptops.Add(laptop);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        
         [HttpGet("CreateProcessor")]
         public IActionResult CreateProcessor()
         {
@@ -54,20 +69,18 @@ namespace QazaqTehnologyForSite.Controllers
         {
             _db.Processors.Add(processor);
             await _db.SaveChangesAsync();
-            return RedirectToAction("CreateLaptop");
-        }
-        [HttpGet("ViewAllProcessors")]
-        public async Task<IActionResult> ViewAllProcessors()
-        {
-            return View(await _db.Processors.ToListAsync());
+            return Ok();
         }
         
-        [HttpPost("ChooseProcessor")]
-        public async Task<IActionResult> ChooseProcessor(Processor processor)
+        [HttpPost("TakeProcessorsIdForLaptop")]
+        public IActionResult TakeProcessorsIdForLaptop(int idLaptop,int idProc)
         {
-           await CreateLaptop(null, processor);
-           return RedirectToAction("CreateLaptop");
+            var includProc = _db.Processors.SingleOrDefault(p => p.Id == idProc);
+            var includLaptop = _db.Laptops.SingleOrDefault(p => p.Id == idLaptop);
+            if (includLaptop != null) includLaptop.Processors.Add(includProc);
+            _db.SaveChanges();
+            return Ok();
         }
-            
+        
     }
 }

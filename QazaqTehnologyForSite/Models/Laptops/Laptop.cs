@@ -5,9 +5,13 @@ namespace QazaqTehnologyForSite.Models.Laptops
 {
     public class Laptop 
     {
+        public Laptop()
+        {
+            Processors = new List<Processor>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
-        public Processor Processor { get; set; }
+        public ICollection<Processor> Processors{ get; set; }
         // public Processor Processor { get; set; }
         // public RAMMemory RamMemory { get; set; }
         // public SSDMemory SsdMemory { get; set; }

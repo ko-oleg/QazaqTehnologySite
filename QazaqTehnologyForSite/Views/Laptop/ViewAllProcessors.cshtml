@@ -8,7 +8,7 @@
     
     @foreach (var item in Model)
     {
-        <tr><form asp-action="ChooseProcessor" asp-controller="Laptop" method="post"><td><input type="text" value="@item.Name" /></td>
+        <tr><form asp-action="" asp-controller="Laptop" method="post"><td><input type="text" value="@item.Name" /></td>
             <td><input type="submit" value="Выбрать" class="btn btn-secondary" /></td></form></tr>
     }
     

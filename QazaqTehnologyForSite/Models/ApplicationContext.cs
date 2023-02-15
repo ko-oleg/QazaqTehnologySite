@@ -9,16 +9,16 @@ namespace QazaqTehnologyForSite.Models
     {
         public Microsoft.EntityFrameworkCore.DbSet<Laptop> Laptops { get; set; }
         public Microsoft.EntityFrameworkCore.DbSet<Processor> Processors { get; set; }
-        // public DbSet<RAMMemory> RamMemories { get; set; }
-        // public DbSet<SSDMemory> SsdMemories { get; set; }
-        // public DbSet<Display> Displays { get; set; }
-        // public DbSet<Ports> Ports { get; set; }
-        // public DbSet<WirelessConnection> WirelessConnections { get; set; }
-        // public DbSet<NetworkController> NetworkControllers { get; set; }
-        // public DbSet<SecurityLock> SecurityLocks { get; set; }
-        // public DbSet<OperatingSystem> OperatingSystems { get; set; }
-        // public DbSet<Set> Sets { get; set; }
-        // public DbSet<Keyboard> Keyboards { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<RAMMemory> RamMemories { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<SSDMemory> SsdMemories { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Display> Displays { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Ports> Ports { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<WirelessConnection> WirelessConnections { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<NetworkController> NetworkControllers { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<SecurityLock> SecurityLocks { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<OperatingSystem> OperatingSystems { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Set> Sets { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Keyboard> Keyboards { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {

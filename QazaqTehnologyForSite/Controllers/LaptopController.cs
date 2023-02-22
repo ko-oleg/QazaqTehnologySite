@@ -44,15 +44,26 @@ namespace QazaqTehnologyForSite.Controllers
                 .Include(laptop => laptop.SecurityLock)
                 .Include(laptop => laptop.OperatingSystem)
                 .Include(laptop => laptop.Set)
-                .Include(laptop => laptop.Keyboard).ToList();
+                .Include(laptop => laptop.Keyboard);
             return Ok(laptops);
         }
         
         [HttpGet("GetLaptopById")]
         public IActionResult GetLaptopById(int id)
         {
-            var laptop = _db.Laptops.Find(id).Display;
-            return Ok(laptop);
+            var laptops = _db.Laptops
+                .Include(laptop => laptop.Processors)
+                .Include(laptop => laptop.RamMemory)
+                .Include(laptop => laptop.SsdMemory)
+                .Include(laptop => laptop.Display)
+                .Include(laptop => laptop.Ports)
+                .Include(laptop => laptop.WirelessConnection)
+                .Include(laptop => laptop.NetworkController)
+                .Include(laptop => laptop.SecurityLock)
+                .Include(laptop => laptop.OperatingSystem)
+                .Include(laptop => laptop.Set)
+                .Include(laptop => laptop.Keyboard).FirstOrDefault(u => u.Id == id);
+            return Ok(laptops);
         }
         
         // Laptop //
